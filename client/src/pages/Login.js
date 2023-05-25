@@ -38,14 +38,15 @@ function Login() {
           <Form.Item label="Password" name="password">
             <Input placeholder="Password" type="password" />
           </Form.Item>
+          <div className="d-flex justify-content-between align-items-center">
+            <Button className="primary-button my-2" htmlType="submit">
+              LOGIN
+            </Button>
 
-          <Button className="primary-button my-2" htmlType="submit">
-            LOGIN
-          </Button>
-
-          <Link to="/register" className="anchor mt-2">
-            Do not have an account? Click here to register
-          </Link>
+            <Link to="/register" className="anchor mt-2">
+              Click here to register
+            </Link>
+          </div>
         </Form>
       </div>
     </div>

@@ -41,13 +41,15 @@ function Register() {
             <Input placeholder="Password" type="password" />
           </Form.Item>
 
+          <div className="d-flex justify-content-between align-items-center">
           <Button className="primary-button my-2" htmlType="submit">
             REGISTER
           </Button>
 
           <Link to="/login" className="anchor mt-2">
-            Already a user? Click here to login
+            Click here to login
           </Link>
+          </div>
         </Form>
       </div>
     </div>
