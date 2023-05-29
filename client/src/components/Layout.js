@@ -61,14 +61,39 @@ function Layout({ children }) {
     },
   ];
 
-  const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
+  const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-heart-line",
+    },
 
+    {
+      name: "Appointments",
+      path: "/appointments",
+      icon: "ri-file-list-line",
+    },
+
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "ri-user-3-line",
+    },
+  ];
+
+  const menuToBeRendered = user?.isAdmin
+    ? adminMenu
+    : user?.isDoctor
+    ? doctorMenu
+    : userMenu;
+  const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
   return (
     <div className="main">
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
             <h1 className="logo">SH</h1>
+            <h1 className="role">{role}</h1>
           </div>
           <div className="menu">
             {menuToBeRendered.map((menu) => {
@@ -113,7 +138,11 @@ function Layout({ children }) {
             )}
 
             <div className="d-flex align-items-center px-4">
-              <Badge count={user?.unseenNotifications.length} showCount onClick={()=>navigate('/notifications')}>
+              <Badge
+                count={user?.unseenNotifications.length}
+                showCount
+                onClick={() => navigate("/notifications")}
+              >
                 <i class="ri-notification-2-fill header-action-icon px-2"></i>
               </Badge>
 
