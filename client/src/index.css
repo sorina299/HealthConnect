@@ -50,6 +50,12 @@ label {
   z-index: 9999;
 }
 
+p{
+  color: rgba(0, 0, 0, 0.685) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .spinner-border {
   width: 5rem;
   height: 5rem;
@@ -73,7 +79,7 @@ label {
 }
 
 .card {
-  box-shadow: 0 0 2px gray;
+  box-shadow: 0 0 2px rgb(190, 189, 189);
   border-radius: 0 !important;
 }
 
@@ -97,6 +103,10 @@ label {
 
 .anchor:hover {
   text-decoration: underline !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 /* authentication pages */

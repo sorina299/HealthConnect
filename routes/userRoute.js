@@ -5,6 +5,7 @@ const Doctor = require("../models/doctorModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middlewares/authMiddleware");
+//const Appointment = require("../models/appointmentModel");
 
 router.post("/register", async (req, res) => {
   try {
@@ -159,6 +160,49 @@ router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
       success: false,
       error,
     });
+  }
+});
+
+router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
+  try {
+    const doctors = await Doctor.find({ status: "approved" });
+    res.status(200).send({
+      message: "Doctors fetched successfully",
+      success: true,
+      data: doctors,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error getting all doctors",
+      success: false,
+      error,
+    });
+  }
+});
+
+router.post("/book-appointment", authMiddleware, async (req, res) => {
+  try {
+    req.body.status = "pending";
+    const newAppointment = new Appointment(req.body);
+    await newAppointment.save();
+    //pushing notifications to doctor based on his user id
+    const user = await User.findOne({ _id: req.body.doctorInfo.userId });
+    user.unseenNotifications.push({
+      type: "new-appointment-request",
+      message: `A new appointment request has been made by ${req.body.userInfo.name}`,
+      onClickPath: "/doctor/appointments",
+    });
+    await user.save();
+    res.status(200).send({
+      message: "Appointment booked successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({ message: "Error booking appointment", success: false, error });
   }
 });
 
