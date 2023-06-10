@@ -76,7 +76,7 @@ function Notifications() {
 
           {user?.unseenNotifications.map((notification) => (
             <div
-              className="card p-2"
+              className="card p-2 mt-2"
               onClick={() => navigate(notification.onClickPath)}
             >
               <div className="card-text">{notification.message}</div>
@@ -89,7 +89,7 @@ function Notifications() {
           </div>
           {user?.seenNotifications.map((notification) => (
             <div
-              className="card p-2"
+              className="card p-2 mt-2"
               onClick={() => navigate(notification.onClickPath)}
             >
               <div className="card-text">{notification.message}</div>
