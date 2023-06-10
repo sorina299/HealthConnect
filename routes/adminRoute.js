@@ -71,4 +71,17 @@ router.post("/change-doctor-account-status", authMiddleware, async (req, res) =>
   }
 });
 
+router.post("/book-appointment", authMiddleware, async (req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Erro",
+      success: false,
+      error,
+    });
+  }
+});
+
 module.exports = router;

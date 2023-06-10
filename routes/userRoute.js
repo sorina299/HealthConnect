@@ -5,7 +5,9 @@ const Doctor = require("../models/doctorModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middlewares/authMiddleware");
-//const Appointment = require("../models/appointmentModel");
+const Appointment = require("../models/appointmentModel");
+const dayjs = require("dayjs");
+const moment = require("moment");
 
 router.post("/register", async (req, res) => {
   try {
@@ -184,6 +186,8 @@ router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
 router.post("/book-appointment", authMiddleware, async (req, res) => {
   try {
     req.body.status = "pending";
+    req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+    req.body.time = moment(req.body.date, "HH:mm").toISOString();
     const newAppointment = new Appointment(req.body);
     await newAppointment.save();
     //pushing notifications to doctor based on his user id
@@ -200,9 +204,42 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .send({ message: "Error booking appointment", success: false, error });
+    res.status(500).send({
+      message: "Error booking appointment",
+      success: false,
+      error,
+    });
+  }
+});
+
+router.post("/check-booking-availability", authMiddleware, async (req, res) => {
+  try {
+    const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+    const doctorId = req.body.doctorId;
+    const appointments = await Appointment.find({
+      doctorId,
+      date,
+      //status: "approved",
+    });
+
+    if (appointments.length > 0) {
+      return res.status(200).send({
+        message: "Appointment not available",
+        success: false,
+      });
+    } else {
+      return res.status(200).send({
+        message: "Appointment available",
+        success: true,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error booking appointment",
+      success: false,
+      error,
+    });
   }
 });
 
