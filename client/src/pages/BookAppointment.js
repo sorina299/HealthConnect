@@ -157,13 +157,13 @@ function BookAppointment() {
                   }}
                 />
                 {!isAvailable &&              <Button
-                  className="primary-button mt-3"
+                  className="primary-button mt-3 full-width-button"
                   onClick={checkAvailability}
                 >
                   Check Availability
                 </Button>}
                 {isAvailable && (
-                  <Button className="primary-button mt-3" onClick={bookNow}>
+                  <Button className="primary-button mt-3 full-width-button" onClick={bookNow}>
                     Book Now
                   </Button>
                 )}

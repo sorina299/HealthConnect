@@ -47,12 +47,6 @@ function Layout({ children }) {
       path: "/admin/doctorslist",
       icon: "ri-user-heart-line",
     },
-
-    {
-      name: "Profile",
-      path: "/profile",
-      icon: "ri-user-3-line",
-    },
   ];
 
   const doctorMenu = [
