@@ -26,8 +26,31 @@ function UsersList() {
       dispatch(hideLoading());
     }
   };
-
-
+  
+    const deleteUser = async (userId) => {
+      try {
+        dispatch(showLoading());
+  
+        // Send a DELETE request to delete the user
+        const response = await axios.delete(`/api/admin/delete-user/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+  
+        dispatch(hideLoading());
+  
+        if (response.data.success) {
+          // Show a success message
+          toast.success(response.data.message);
+  
+          // Refresh the users list
+          setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
+        }
+      } catch (error) {
+        dispatch(hideLoading());
+      }
+    };
 
   useEffect(() => {
     getUsersData();
@@ -52,7 +75,7 @@ function UsersList() {
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
-          <i class="ri-delete-bin-fill"></i>
+          <i class="ri-delete-bin-fill" onClick={() => deleteUser(record._id)}></i>
         </div>
       ),
     },

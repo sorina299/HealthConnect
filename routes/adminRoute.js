@@ -87,5 +87,25 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
   }
 });
 
+router.delete("/delete-user/:userId", authMiddleware, async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Delete the user from the database
+    await User.findByIdAndDelete(userId);
+
+    res.status(200).send({
+      message: "User deleted successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error deleting user",
+      success: false,
+      error,
+    });
+  }
+});
 
 module.exports = router;
