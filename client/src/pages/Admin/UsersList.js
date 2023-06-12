@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import {Table} from 'antd'
+import dayjs from "dayjs";
+import {toast} from "react-hot-toast"
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -25,6 +27,8 @@ function UsersList() {
     }
   };
 
+
+
   useEffect(() => {
     getUsersData();
   }, []);
@@ -41,13 +45,14 @@ function UsersList() {
     {
       title: "Created At",
       dataIndex: "createdAt",
+      render: (record, text) => dayjs(record.createdAt).format('DD-MM-YYYY')
     },
     {
       title: "Actions",
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
-          <h1 class="anchor">Block</h1>
+          <i class="ri-delete-bin-fill"></i>
         </div>
       ),
     },
@@ -56,6 +61,7 @@ function UsersList() {
   return (
     <Layout>
       <h1 className="page-title">Users List</h1>
+      <hr/>
       <Table columns={columns} dataSource={users}/>
     </Layout>
   );

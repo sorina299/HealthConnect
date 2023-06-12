@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Button, Col, DatePicker, Row, TimePicker } from "antd";
 import moment from "moment";
 import dayjs from "dayjs";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
+  const navigate = useNavigate();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [doctor, setDoctor] = useState(null);
@@ -65,6 +66,7 @@ function BookAppointment() {
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
+        navigate('/appointments')
       }
     } catch (error) {
       toast.error("Error booking appointment");
@@ -111,12 +113,34 @@ function BookAppointment() {
             {doctor.firstName} {doctor.lastName}
           </h1>
           <hr />
-          <Row>
+          <Row gutter={20} className="mt-4" align="middle">
+          <Col span={8} sm={24} xs={24} lg={8}>
+              <img
+                src="https://thephotoboss.com/wp-content/uploads/2016/07/booknow-1.png"
+                alt=""
+              ></img>
+            </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
               <h1 className="normal-text">
                 <b>Appointment</b>
               </h1>
-              <div className="d-flex flex-column pt-2">
+              <p>
+                <b>Phone Number : </b>
+                {doctor.phoneNumber}
+              </p>
+              <p>
+                <b>Address : </b>
+                {doctor.address}
+              </p>
+              <p>
+                <b>Fee Per Visit : </b>
+                {doctor.feePerConsultation}
+              </p>
+              <p>
+                <b>Website : </b>
+                {doctor.website}
+              </p>
+              <div className="d-flex flex-column pt-2 mt-2">
                 <DatePicker
                   format="DD-MM-YYYY"
                   onChange={(value) => {
@@ -132,12 +156,12 @@ function BookAppointment() {
                     setTime(dayjs(value).format("HH:mm"));
                   }}
                 />
-                <Button
+                {!isAvailable &&              <Button
                   className="primary-button mt-3"
                   onClick={checkAvailability}
                 >
                   Check Availability
-                </Button>
+                </Button>}
                 {isAvailable && (
                   <Button className="primary-button mt-3" onClick={bookNow}>
                     Book Now
@@ -145,6 +169,7 @@ function BookAppointment() {
                 )}
               </div>
             </Col>
+            
           </Row>
         </div>
       )}

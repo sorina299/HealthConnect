@@ -27,12 +27,6 @@ function Layout({ children }) {
       path: "/apply-doctor",
       icon: "ri-hospital-line",
     },
-
-    {
-      name: "Profile",
-      path: "/profile",
-      icon: "ri-user-3-line",
-    },
   ];
 
   const adminMenu = [
