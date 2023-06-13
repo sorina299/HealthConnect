@@ -12,5 +12,4 @@ app.use("/api/admin", adminRoute);
 app.use("/api/doctor", doctorRoute);
 const port = process.env.PORT || 5000;
 
-
 app.listen(port, () => console.log(`Node server started at port ${port}`));

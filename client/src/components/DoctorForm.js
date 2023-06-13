@@ -4,11 +4,7 @@ import moment from "moment";
 
 function DoctorForm({ onFinish, initialValues }) {
   return (
-    <Form
-      layout="vertical"
-      onFinish={onFinish}
-      initialValues={initialValues}
-    >
+    <Form layout="vertical" onFinish={onFinish} initialValues={initialValues}>
       <h1 className="card-title mt-3">Personal Information</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>

@@ -3,20 +3,19 @@
   height: 100vh;
 }
 
-.logo{
+.logo {
   color: white;
   font-weight: bold;
-
 }
 
-.role{
+.role {
   color: white;
   font-size: 14px;
   margin-top: -20px;
 }
 
 .sidebar {
-  background-color: #005555;
+  background: rgb(54, 1, 45);
   border-radius: 5px;
   box-shadow: 0 0 2px gray;
   margin-right: 20px;
@@ -73,14 +72,14 @@
 }
 
 .active-menu-item {
-  color:white;
-  background-color: #013737;
-  padding:5px;
+  color: white;
+  background-color: rgba(122, 46, 110, 0.466);
+  padding: 5px;
   border-radius: 5px;
 }
 
-.header-action-icon{
-  font-size:30px;
+.header-action-icon {
+  font-size: 30px;
   color: black;
   cursor: pointer;
   padding-left: 10px;
@@ -88,17 +87,17 @@
   justify-content: space-between;
 }
 
-.ant-scroll-number-only-unit{
+.ant-scroll-number-only-unit {
   padding-right: -10px !important;
   padding-bottom: -10px !important;
 }
 
-@media screen and (max-width: 768px){
-  .menu{
-    padding: 0 5px;
-  }
+.ri-delete-bin-fill {
+  font-size: 25px;
 }
 
-.ri-delete-bin-fill{
-  font-size: 25px;
+@media screen and (max-width: 768px) {
+  .menu {
+    padding: 0 5px;
+  }
 }

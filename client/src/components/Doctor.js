@@ -13,12 +13,12 @@ function Doctor({ doctor }) {
       </h1>
       <hr />
       <p>
-        <b>Phone Number : </b>
-        {doctor.phoneNumber}
+        <b>Specialization : </b>
+        {doctor.specialization}
       </p>
       <p>
-        <b>Address : </b>
-        {doctor.address}
+        <b>Phone Number : </b>
+        {doctor.phoneNumber}
       </p>
       <p>
         <b>Fee Per Visit : </b>

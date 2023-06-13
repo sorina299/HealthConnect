@@ -34,13 +34,11 @@ router.post("/update-doctor-profile", authMiddleware, async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .send({
-        message: "Error updating doctor profile",
-        success: false,
-        error,
-      });
+    res.status(500).send({
+      message: "Error updating doctor profile",
+      success: false,
+      error,
+    });
   }
 });
 

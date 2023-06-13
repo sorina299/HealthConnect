@@ -66,7 +66,7 @@ function BookAppointment() {
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
-        navigate('/appointments')
+        navigate("/appointments");
       }
     } catch (error) {
       toast.error("Error booking appointment");
@@ -114,7 +114,7 @@ function BookAppointment() {
           </h1>
           <hr />
           <Row gutter={20} className="mt-4" align="middle">
-          <Col span={8} sm={24} xs={24} lg={8}>
+            <Col span={8} sm={24} xs={24} lg={8}>
               <img
                 src="https://thephotoboss.com/wp-content/uploads/2016/07/booknow-1.png"
                 alt=""
@@ -124,6 +124,10 @@ function BookAppointment() {
               <h1 className="normal-text">
                 <b>Appointment</b>
               </h1>
+              <p>
+                <b>Specialization : </b>
+                {doctor.specialization}
+              </p>
               <p>
                 <b>Phone Number : </b>
                 {doctor.phoneNumber}
@@ -156,20 +160,24 @@ function BookAppointment() {
                     setTime(dayjs(value).format("HH:mm"));
                   }}
                 />
-                {!isAvailable &&              <Button
-                  className="primary-button mt-3 full-width-button"
-                  onClick={checkAvailability}
-                >
-                  Check Availability
-                </Button>}
+                {!isAvailable && (
+                  <Button
+                    className="primary-button mt-3 full-width-button"
+                    onClick={checkAvailability}
+                  >
+                    Check Availability
+                  </Button>
+                )}
                 {isAvailable && (
-                  <Button className="primary-button mt-3 full-width-button" onClick={bookNow}>
+                  <Button
+                    className="primary-button mt-3 full-width-button"
+                    onClick={bookNow}
+                  >
                     Book Now
                   </Button>
                 )}
               </div>
             </Col>
-            
           </Row>
         </div>
       )}

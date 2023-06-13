@@ -86,7 +86,9 @@ function Notifications() {
         </Tabs.TabPane>
         <Tabs.TabPane tab="Seen" key={1}>
           <div className="d-flex justify-content-end">
-            <h1 className="anchor" onClick={()=>deleteAll()}>Delete all</h1>
+            <h1 className="anchor" onClick={() => deleteAll()}>
+              Delete all
+            </h1>
           </div>
           {user?.seenNotifications.map((notification) => (
             <div

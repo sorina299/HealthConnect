@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 import dayjs from "dayjs";
 
 function DoctorsList() {
@@ -45,7 +45,7 @@ function DoctorsList() {
         getDoctorsData();
       }
     } catch (error) {
-      toast.error('Error changing the doctor account status')
+      toast.error("Error changing the doctor account status");
       dispatch(hideLoading());
     }
   };
@@ -71,7 +71,7 @@ function DoctorsList() {
     {
       title: "Created At",
       dataIndex: "createdAt",
-      render: (record, text) => dayjs(record.createdAt).format('DD-MM-YYYY')
+      render: (record, text) => dayjs(record.createdAt).format("DD-MM-YYYY"),
     },
     {
       title: "Status",
@@ -105,7 +105,7 @@ function DoctorsList() {
   return (
     <Layout>
       <h1 className="page-title">Doctors List</h1>
-      <hr/>
+      <hr />
       <Table columns={columns} dataSource={doctors} />
     </Layout>
   );

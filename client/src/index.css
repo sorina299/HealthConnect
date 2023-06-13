@@ -1,35 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope&family=Raleway:wght@400;500;600&display=swap");
 * {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Manrope", sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
 }
 /* antd override */
 
 input {
-  border-radius: 2px !important;
-  border: 1px solid rgba(128, 128, 128, 0.26) !important;
+  border: 0.7px solid rgba(128, 128, 128, 0.373) !important;
   height: 40px !important;
 }
 
-input:focus, .ant-picker {
+input:focus,
+.ant-picker {
   outline: none !important;
   box-shadow: none !important;
   border: 1px solid gray !important;
 }
 
 label {
-  font-size: 16px !important;
+  font-size: 17px !important;
   color: black !important;
 }
 
 .ant-form-item {
-  margin: 10px 0 !important;
+  margin: 13px 0 !important;
 }
 
-.ant-picker-input input{
+.ant-picker-input input {
   border: none !important;
 }
 
-.ant-picker{
+.ant-picker {
   border-radius: 2px !important;
   border: 1px solid rgba(128, 128, 128, 0.26) !important;
   height: 40px !important;
@@ -50,32 +51,32 @@ label {
   z-index: 9999;
 }
 
-p{
+p {
   color: rgba(0, 0, 0, 0.685) !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .spinner-border {
-  width: 5rem;
-  height: 5rem;
-  color:white !important;
+  width: 80px;
+  height: 80px;
+  color: white !important;
 }
 
-.page-title{
-  font-size:25px;
+.page-title {
+  font-size: 30px;
   color: rgba(0, 0, 0, 0.833);
   font-weight: bold;
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.664);
+  color: rgba(0, 0, 0, 0.722);
 }
 
 .normal-text {
-  font-size: 1rem;
+  font-size: 20px;
 }
 
 .card {
@@ -85,8 +86,8 @@ p{
 
 .primary-button {
   border-radius: 0 !important;
-  background-color: #005555 !important;
-  border-color: #005555 !important;
+  background: rgb(54, 1, 45) !important;
+  border-color: rgb(54, 1, 45) !important;
   height: 40px !important;
   width: 100% !important;
   color: white !important;
@@ -94,7 +95,7 @@ p{
   width: max-content !important;
 }
 
-.full-width-button{
+.full-width-button {
   width: 100% !important;
 }
 
@@ -109,7 +110,7 @@ p{
   text-decoration: underline !important;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
@@ -120,20 +121,24 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #005555;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(109, 8, 92) 50%,
+    rgba(2, 0, 36, 1) 100%
+  );
 }
 
 .authentication-form {
-  width: 400px;
+  width: 350px;
 }
 
 .authentication .card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  background-color: orangered;
-  color: white;
+  font-size: 22px;
+  background: rgb(217, 152, 22);
+  color: rgba(2, 0, 36, 1);
   max-width: max-content !important;
-  padding: 7px 15px;
-  margin-left: -40px;
+  padding: 6px 14px;
+  margin-left: -37px;
   border-bottom-left-radius: 10px;
 }
