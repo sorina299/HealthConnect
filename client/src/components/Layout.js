@@ -80,7 +80,7 @@ function Layout({ children }) {
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
-            <h1 className="logo">SH</h1>
+            <h1 className="logo">HC</h1>
             <h1 className="role">{role}</h1>
           </div>
           <div className="menu">

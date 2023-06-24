@@ -29,25 +29,35 @@ function UsersList() {
 
   const deleteUser = async (userId) => {
     try {
-      dispatch(showLoading());
+      // Open the confirmation window
+      const confirmDeletion = window.confirm(
+        "Are you sure you want to delete this user?"
+      );
 
-      // Send a DELETE request to delete the user
-      const response = await axios.delete(`/api/admin/delete-user/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      if (confirmDeletion) {
+        dispatch(showLoading());
 
-      dispatch(hideLoading());
-
-      if (response.data.success) {
-        // Show a success message
-        toast.success(response.data.message);
-
-        // Refresh the users list
-        setUsers((prevUsers) =>
-          prevUsers.filter((user) => user._id !== userId)
+        // Send a DELETE request to delete the user
+        const response = await axios.delete(
+          `/api/admin/delete-user/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
+
+        dispatch(hideLoading());
+
+        if (response.data.success) {
+          // Show a success message
+          toast.success(response.data.message);
+
+          // Refresh the users list
+          setUsers((prevUsers) =>
+            prevUsers.filter((user) => user._id !== userId)
+          );
+        }
       }
     } catch (error) {
       dispatch(hideLoading());

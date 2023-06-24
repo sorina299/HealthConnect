@@ -95,7 +95,8 @@ router.delete("/delete-user/:userId", authMiddleware, async (req, res) => {
     await User.findByIdAndDelete(userId);
 
     res.status(200).send({
-      message: "User deleted successfully",
+      message: "Confirm deletion",
+      userId,
       success: true,
     });
   } catch (error) {
